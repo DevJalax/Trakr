@@ -109,4 +109,35 @@ private Coordinates parseCoordinates(String gpsData) {
     double longitude = Double.parseDouble(parts[1].split(": ")[1]);
     return new Coordinates(latitude, longitude);
  }
+
+// Method to check for bus breakdown (stationary for too long)
+ @Scheduled(fixedRate = 600000)
+public void checkForBusBreakdown(Vehicle vehicle) {
+    long lastUpdate = vehicleService.getLastUpdateTimestamp(vehicle.getVehicleId());
+    long currentTime = System.currentTimeMillis();
+
+    // If the vehicle hasn't updated for more than 10 minutes
+    if ((currentTime - lastUpdate) > 600000) { // 10 minutes without movement
+        notificationService.sendNotification("Vehicle " + vehicle.getBusNumber() + " is not moving. Possible Breakdown.");
+        assignNewBus(vehicle);
+    }
+}
+
+// Method to assign a new bus on the same route if the bus is not moving (e.g., breakdown)
+private void assignNewBus(Vehicle vehicle) {
+    List<Vehicle> availableBuses = vehicleService.getAvailableBuses(vehicle.getAssignedRouteId());
+
+    // Check if an alternate bus is available and not on any other route
+    Vehicle newBus = availableBuses.stream()
+            .filter(bus -> bus.getStatus().equals("On Time"))
+            .findFirst().orElse(null);
+
+    if (newBus != null) {
+        vehicleService.assignNewBus(vehicle, newBus);
+        notificationService.sendNotification("New bus assigned: " + newBus.getBusNumber());
+    } else {
+        notificationService.sendNotification("No available bus for re-assignment.");
+    }
+  }
+
 }
