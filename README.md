@@ -31,3 +31,7 @@
 - Apache POI (for Excel file handling)
 - H2 Database (for in-memory storage)
 - RESTful API design
+
+## Diagram
+
+![sample](bus-tracker.png)
