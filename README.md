@@ -8,7 +8,7 @@
 
 - **WebSocket Notifications**: Provides real-time updates on vehicle status changes, ensuring users receive instant notifications about important events.
 
-- **Scheduler for GPS Tracking**: A scheduled task that retrieves GPS data every 10 seconds for each vehicle, ensuring up-to-date location information is maintained in the system.
+- **Scheduler for GPS Tracking**: A scheduled task that retrieves GPS data every second for each vehicle, ensuring up-to-date location information is maintained in the system.
 
 ## Features
 
