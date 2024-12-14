@@ -35,3 +35,19 @@
 ## Diagram
 
 ![sample](bus-tracker.png)
+
+## To do in future 
+
+1) Vehicle condition monitoring (sensors)
+
+2) Driver skill judgement using 
+a) PIEV model
+b) Road marking following (bottom sensors)
+c) Sign board following (front sensors)
+d) Travel time , arrived time and delays
+
+3) Analysis
+a) Highway traffic / condition / alternate route suggestion
+b) Traffic density
+c) Road capacity per second
+d) Intersection roads / Train crossings / Flyovers traffic
