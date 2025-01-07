@@ -61,3 +61,5 @@ Preferred departure times of Bus :
 - 12:30 AM: Mid-day travelers.
 - 5:30 PM: Evening commuters.
 - 9:30 PM: Overnight travelers.
+- weekdays : early mornings or night
+- weekend - all slots fill
