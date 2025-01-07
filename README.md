@@ -51,3 +51,13 @@ a) Highway traffic / condition / alternate route suggestion
 b) Traffic density
 c) Road capacity per second
 d) Intersection roads / Train crossings / Flyovers traffic
+
+## Trivia 
+
+Preferred departure times of Bus : 
+
+6:30 AM: Early travelers (overnight or long-distance).
+9:00 AM: Morning commuters or short/medium-distance travelers.
+12:30 AM: Mid-day travelers.
+5:30 PM: Evening commuters.
+9:30 PM: Overnight travelers.
