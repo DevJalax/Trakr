@@ -66,3 +66,7 @@ Preferred departure times of Bus :
 - AC Sleeper bus - 70% (Dist > 200 KM)
 - Non - AC Seater bus - 30%  (Dist < 200 KM )
 - Primo bus -> wifi , restroom , tv / seat , charging point
+- Number of Pitstops based on distance
+- < 200 KM = 1 stop
+- 200-400 KM = 1-2 stops
+- > 500 KM = 2-3 stops
