@@ -63,3 +63,6 @@ Preferred departure times of Bus :
 - 9:30 PM: Overnight travelers.
 - weekdays : early mornings or night
 - weekend - all slots fill
+- AC Sleeper bus - 70% (Dist > 200 KM)
+- Non - AC Seater bus - 30%  (Dist < 200 KM )
+- Primo bus -> wifi , restroom , tv / seat , charging point
