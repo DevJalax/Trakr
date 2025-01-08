@@ -69,4 +69,5 @@ Preferred departure times of Bus :
 - Number of Pitstops based on distance
 - < 200 KM = 1 stop
 - 200-400 KM = 1-2 stops
-- > 500 KM = 2-3 stops
+- more than 500 KM = 2-3 stops
+- Luggage policy : 10 KG/passenger max
