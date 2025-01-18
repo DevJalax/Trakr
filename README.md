@@ -98,6 +98,6 @@ API Integration:
 5) HRMS connect for salary management
 
 
-## Diagram
+## GPS API diagram :
 
 ![sample](bus-tracker.png)
