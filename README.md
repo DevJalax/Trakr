@@ -1,101 +1,152 @@
-# Bus booking
+# Trakr Bus Booking System
 
-## Features
+## 1. Bus Booking  
+A seamless platform for booking buses, offering flexible seating options, amenities, and dynamic pricing based on demand.
 
-Features: 
+---
 
-1) Bus booking
+## 2. Dynamic Bus Tracking  
+- Utilizes **GPS API** and **Google Maps API** for real-time tracking of buses.
+- Provides live updates on:
+  - Current bus location.
+  - Pitstops and stop updates dynamically calculated based on journey time and route.
 
-2) Dynamic bus tracking using GPS api , Google api and pitstop/stop updates
+---
 
-3) Cancellation Policy and refund engine
+## 3. Cancellation Policy and Refund Engine  
+- Flexible cancellation policies with automated refund processing based on booking terms.
+- Instant notifications on refund status.
 
-4) ML
+---
 
-I) Dynamic pricing demand of bus type and seat  
+## 4. Machine Learning (ML)
 
-II) Driver skill analysis from IOT data using :
-a) PIEV model (qualitative test while driver onboarding)
-b) Travel time , arrived time and delays (Driver Rating = (D * wD) + (A * wA) + (E * wE))
+### I. Dynamic Pricing  
+- Adjusts ticket prices dynamically based on:
+  - **Bus type**: Sleeper, Seater, AC/Non-AC, Primo.
+  - **Seat demand**: High-demand seats priced higher.
 
-D = Departure Punctuality Score (0–5)
-A = Arrival Punctuality Score (0–5)
-E = En Route Behavior Score (Delays) (0–5)
-wD, wA, wE = Weights for each factor (e.g., 0.3, 0.5, 0.2).
+### II. Driver Skill Analysis  
+- **Metrics for Evaluation**:
+  - **a) PIEV Model**: Qualitative testing during driver onboarding.
+  - **b) Travel Time Analysis**:
+    - Formula:  
+      `Driver Rating = (D * wD) + (A * wA) + (E * wE)`
+      - `D`: Departure Punctuality Score (0–5)
+      - `A`: Arrival Punctuality Score (0–5)
+      - `E`: En Route Behavior Score (Delays) (0–5)
+      - `wD`, `wA`, `wE`: Weights (e.g., 0.3, 0.5, 0.2).
 
-// finally take average of a and b
+- **Final Rating**:
+  - Average of **PIEV Model** score and **Travel Time Analysis** score.
+  - Retain drivers with ratings **≥ 4.0**.
 
-// Retain drivers with more than 4+ rating
+---
 
-5) Jira integration for customer support
+## 5. Jira Integration for Customer Support  
+- Seamless **Jira integration** to log customer complaints and track resolution status.
 
-6) Automatic next bus scheduling in case of bus breakdown (alert to nearest bus stop that need a bus)
+---
 
-7) GPS API to track bus location
+## 6. Automatic Next Bus Scheduling  
+- In case of a bus breakdown:
+  - Alert nearest bus stops requiring replacement buses.
+  - Automatically schedule the next bus and notify passengers.
 
-8) IOT :
+---
 
-a) Vehicle condition monitoring(fuel,engine,battery,lights) and alert the driver
+## 7. GPS API for Real-Time Bus Tracking  
+- Tracks bus location and displays live updates on passenger apps.
 
-b) Real-time analysis :
-i) Highway traffic / condition / alternate route suggestion
-ii) Traffic density
-iii) Road capacity per second
-iv) Road marking following (bottom sensors)
-v) Sign board following (front sensors)
-vi) Intersection roads / Train crossings / Flyovers traffic
+---
 
-9) Driver on-boarding , de-boarding , salary management(base pay + no of buses driven/month)
+## 8. IoT Features  
 
-Bus type :
+### a) Vehicle Condition Monitoring  
+- Tracks:
+  - Fuel levels.
+  - Engine health.
+  - Battery status.
+  - Lights condition.
+- Alerts drivers to maintenance needs.
 
-1) Based on Seating - Sleeper / Seater
+### b) Real-Time Analysis  
+- **i)** Highway traffic and alternate route suggestions.  
+- **ii)** Traffic density monitoring.  
+- **iii)** Road capacity per second analysis.  
+- **iv)** Road marking adherence using bottom sensors.  
+- **v)** Signboard following using front sensors.  
+- **vi)** Intersection, train crossing, and flyover traffic monitoring.
 
-2) Based on Amenities - AC/Non-AC/ + Primo (wifi , restroom , tv / seat , charging point)
+---
 
+## 9. Driver Management  
+- **Driver Onboarding and De-boarding** processes.  
+- **Salary Management**:
+  - **Base Pay**: Fixed monthly pay.  
+  - **Incentives**: Based on the number of buses driven/month.
 
-Pit Stop calculation and location based on route and distance :
+---
 
-I) Pitstop rules :
+## Bus Types  
 
-< 200 KM = 1 stop
-200-400 KM = 1-2 stops
-more than 500 KM = 2-3 stops 
+### 1) Based on Seating  
+- Sleeper  
+- Seater  
 
+### 2) Based on Amenities  
+- Non-AC  
+- AC  
+- Primo (includes Wi-Fi, restrooms, TV per seat, charging points).
 
-II) Dynamic Pitstop calculation : 
+---
 
-- Calculate potential pitstops based on bus current location and time into the journey.
+## Pit Stop Calculation and Location  
 
-- Filter pitstop based on proximity and amenities(Food , Restroom).
+### I. Pitstop Rules  
+- **< 200 KM**: 1 stop.  
+- **200–400 KM**: 1–2 stops.  
+- **> 500 KM**: 2–3 stops.
 
-- Adjusts timing and pitstop recommendations based on live traffic and weather updates.
+### II. Dynamic Pitstop Calculation  
+- Calculates potential pitstops based on:
+  - Bus location.
+  - Time into the journey.  
+- Filters pitstops based on proximity and amenities (e.g., food, restrooms).  
+- Adjusts recommendations dynamically using live traffic and weather updates.
 
+---
 
-Time slots :
+## Time Slots  
+- **T1**: 6:30 AM  
+- **T2**: 9:00 AM  
+- **T3**: 12:30 PM  
+- **T4**: 5:30 PM  
+- **T5**: 9:30 PM  
 
-T1 = 6:30 AM
-T2 = 9:00 AM
-T3 = 12:30 AM
-T4 = 5:30 PM
-T5 = 9:30 PM
+---
 
-Luggage policy : 
+## Luggage Policy  
+- **10 KG/passenger** maximum.
 
-10 KG/passenger max
+---
 
+## API Integration  
 
-API Integration:
+1. **Google Maps API**  
+   - Route mapping and distance calculations.  
 
-1) Google Maps API (for route mapping and distance calculations).
+2. **OpenWeatherMap API**  
+   - Provides live weather conditions.  
 
-2) OpenWeatherMap API (for weather conditions).
+3. **Yelp/Zomato API**  
+   - Displays pitstop details, including restaurants.  
 
-3) Yelp or Zomato API (for pitstop details like restaurants).
+4. **GPS API**  
+   - Real-time bus tracking.
 
-4) GPS API for real-time bus tracking
-
-5) HRMS connect for salary management
+5. **HRMS Connect**  
+   - Manages driver salaries and HR processes.
 
 
 ## GPS API diagram :
