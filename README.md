@@ -1,73 +1,103 @@
-# Transportation Simulator
-
-## Summary
-
-- **Search Functionality**: Implemented using Spring Data JPA Specifications to filter vehicles based on multiple criteria, allowing for dynamic and reusable queries.
-
-- **GPS Integration**: Fetches real-time location data from an external GPS API based on the uploaded vehicles' numbers, enabling tracking of vehicle positions.
-
-- **WebSocket Notifications**: Provides real-time updates on vehicle status changes, ensuring users receive instant notifications about important events.
-
-- **Scheduler for GPS Tracking**: A scheduled task that retrieves GPS data every second for each vehicle, ensuring up-to-date location information is maintained in the system.
+# Bus booking
 
 ## Features
 
-- Upload vehicle data via Excel files.
-- Real-time tracking of vehicles with GPS data.
-- Dynamic search capabilities for filtering vehicles.
-- WebSocket support for live notifications.
+Features: 
 
-## Getting Started
+1) Bus booking
 
-1. Clone the repository.
-2. Set up your environment with the necessary dependencies.
-3. Run the application and access the endpoints for vehicle management and tracking.
+2) Dynamic bus tracking using GPS api , Google api and pitstop/stop updates
 
-## Technologies Used
+3) Cancellation Policy and refund engine
 
-- Spring Boot
-- Spring Data JPA
-- WebSocket
-- Apache POI (for Excel file handling)
-- H2 Database (for in-memory storage)
-- RESTful API design
+4) ML
+
+I) Dynamic pricing demand of bus type and seat  
+
+II) Driver skill analysis from IOT data using :
+a) PIEV model (qualitative test while driver onboarding)
+b) Travel time , arrived time and delays (Driver Rating = (D * wD) + (A * wA) + (E * wE))
+
+D = Departure Punctuality Score (0–5)
+A = Arrival Punctuality Score (0–5)
+E = En Route Behavior Score (Delays) (0–5)
+wD, wA, wE = Weights for each factor (e.g., 0.3, 0.5, 0.2).
+
+// finally take average of a and b
+
+// Retain drivers with more than 4+ rating
+
+5) Jira integration for customer support
+
+6) Automatic next bus scheduling in case of bus breakdown (alert to nearest bus stop that need a bus)
+
+7) GPS API to track bus location
+
+8) IOT :
+
+a) Vehicle condition monitoring(fuel,engine,battery,lights) and alert the driver
+
+b) Real-time analysis :
+i) Highway traffic / condition / alternate route suggestion
+ii) Traffic density
+iii) Road capacity per second
+iv) Road marking following (bottom sensors)
+v) Sign board following (front sensors)
+vi) Intersection roads / Train crossings / Flyovers traffic
+
+9) Driver on-boarding , de-boarding , salary management(base pay + no of buses driven/month)
+
+Bus type :
+
+1) Based on Seating - Sleeper / Seater
+
+2) Based on Amenities - AC/Non-AC/ + Primo (wifi , restroom , tv / seat , charging point)
+
+
+Pit Stop calculation and location based on route and distance :
+
+I) Pitstop rules :
+
+< 200 KM = 1 stop
+200-400 KM = 1-2 stops
+more than 500 KM = 2-3 stops 
+
+
+II) Dynamic Pitstop calculation : 
+
+- Calculate potential pitstops based on bus current location and time into the journey.
+
+- Filter pitstop based on proximity and amenities(Food , Restroom).
+
+- Adjusts timing and pitstop recommendations based on live traffic and weather updates.
+
+
+Time slots :
+
+T1 = 6:30 AM
+T2 = 9:00 AM
+T3 = 12:30 AM
+T4 = 5:30 PM
+T5 = 9:30 PM
+
+Luggage policy : 
+
+10 KG/passenger max
+
+
+API Integration:
+
+1) Google Maps API (for route mapping and distance calculations).
+
+2) OpenWeatherMap API (for weather conditions).
+
+3) Yelp or Zomato API (for pitstop details like restaurants).
+
+4) GPS API for real-time bus tracking
+
+5) HRMS connect for salary management
+
 
 ## Diagram
 
-![sample](bus-tracker.png)
-
-## To do in future 
-
-1) Vehicle condition monitoring (sensors)
-
-2) Driver skill judgement using 
-a) PIEV model
-b) Road marking following (bottom sensors)
-c) Sign board following (front sensors)
-d) Travel time , arrived time and delays
-
-3) Analysis
-a) Highway traffic / condition / alternate route suggestion
-b) Traffic density
-c) Road capacity per second
-d) Intersection roads / Train crossings / Flyovers traffic
-
-## Trivia 
-
-Preferred departure times of Bus : 
-
-- 6:30 AM: Early travelers (overnight or long-distance).
-- 9:00 AM: Morning commuters or short/medium-distance travelers.
-- 12:30 AM: Mid-day travelers.
-- 5:30 PM: Evening commuters.
-- 9:30 PM: Overnight travelers.
-- weekdays : early mornings or night
-- weekend - all slots fill
-- AC Sleeper bus - 70% (Dist > 200 KM)
-- Non - AC Seater bus - 30%  (Dist < 200 KM )
-- Primo bus -> wifi , restroom , tv / seat , charging point
-- Number of Pitstops based on distance
-- < 200 KM = 1 stop
-- 200-400 KM = 1-2 stops
-- more than 500 KM = 2-3 stops
-- Luggage policy : 10 KG/passenger max
+![sample](gpa-api-design.png)
