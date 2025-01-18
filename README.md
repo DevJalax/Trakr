@@ -100,4 +100,4 @@ API Integration:
 
 ## Diagram
 
-![sample](gpa-api-design.png)
+![sample](gpa-api-design.png).
