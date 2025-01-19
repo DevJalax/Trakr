@@ -131,6 +131,17 @@ A seamless platform for booking buses, offering flexible seating options, amenit
 
 ---
 
+## Modules in this monolith :
+
+1) bus-book()
+2) bus-track()
+3) next-bus-schedule()
+4) pitstop-manage()
+5) customer-manage()
+6) driver-manage()
+
+---
+
 ## API Integration  
 
 1. **Google Maps API**  
